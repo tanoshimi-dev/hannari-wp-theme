@@ -1,0 +1,33 @@
+# Environment files
+.env
+
+# Docker volumes (if stored locally)
+db_data/
+wordpress_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# WordPress (if accidentally copied)
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# Logs
+*.log
+logs/
+
+# Backups
+*.sql
+*.sql.gz
+backups/

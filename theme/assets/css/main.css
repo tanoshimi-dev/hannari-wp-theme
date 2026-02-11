@@ -1,0 +1,367 @@
+/**
+ * Hannari Theme - Additional Styles
+ *
+ * @package Hannari
+ * @since 1.0.0
+ */
+
+/* Read More Links */
+.read-more {
+	display: inline-block;
+	margin-top: 0.5rem;
+	font-weight: 500;
+}
+
+/* Page Links (multi-page posts) */
+.page-links {
+	clear: both;
+	margin: 1rem 0;
+	font-weight: 500;
+}
+
+.page-links .page-numbers {
+	background-color: #f5f5f5;
+	border-radius: 3px;
+}
+
+/* Post Navigation */
+.post-navigation {
+	padding: 1rem 0;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.post-navigation .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+	flex: 1;
+	min-width: 50%;
+}
+
+.post-navigation .nav-next {
+	text-align: right;
+}
+
+.post-navigation .nav-subtitle {
+	display: block;
+	font-size: 0.75rem;
+	color: #666;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.post-navigation .nav-title {
+	font-weight: 600;
+}
+
+/* Archive Headers */
+.page-header {
+	margin-bottom: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #222;
+}
+
+.archive-description {
+	margin-top: 0.5rem;
+	color: #666;
+}
+
+/* Sticky Posts */
+.sticky {
+	position: relative;
+}
+
+.sticky::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -1rem;
+	bottom: 0;
+	width: 4px;
+	background-color: #222;
+}
+
+/* Post Formats */
+.format-aside .entry-title,
+.format-status .entry-title {
+	display: none;
+}
+
+.format-quote .entry-content blockquote {
+	font-size: 1.25rem;
+	font-style: italic;
+	border-left: 4px solid #222;
+	padding-left: 1rem;
+	margin: 0;
+}
+
+.format-link .entry-title a::after {
+	content: " \2192";
+}
+
+/* Blockquotes */
+blockquote {
+	margin: 1rem 0;
+	padding: 1rem 1.5rem;
+	border-left: 4px solid #ddd;
+	background-color: #f9f9f9;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+blockquote cite {
+	display: block;
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	color: #666;
+}
+
+/* Code */
+code,
+kbd,
+pre,
+samp {
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 0.875em;
+}
+
+code {
+	background-color: #f5f5f5;
+	padding: 0.125rem 0.25rem;
+	border-radius: 3px;
+}
+
+pre {
+	background-color: #f5f5f5;
+	padding: 1rem;
+	overflow-x: auto;
+	border-radius: 3px;
+}
+
+pre code {
+	background-color: transparent;
+	padding: 0;
+}
+
+/* Tables */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1rem 0;
+}
+
+th,
+td {
+	padding: 0.5rem;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	font-weight: 600;
+	background-color: #f5f5f5;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+select {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-family: inherit;
+	font-size: 1rem;
+	transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: #222;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding: 0.5rem 1rem;
+	background-color: #222;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 1rem;
+	transition: background-color 0.2s ease;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	background-color: #444;
+}
+
+/* Lists */
+ul,
+ol {
+	margin: 0 0 1rem;
+	padding-left: 2rem;
+}
+
+li {
+	margin-bottom: 0.25rem;
+}
+
+/* Definition Lists */
+dl {
+	margin: 0 0 1rem;
+}
+
+dt {
+	font-weight: 600;
+}
+
+dd {
+	margin: 0 0 0.5rem 1rem;
+}
+
+/* Horizontal Rule */
+hr {
+	border: none;
+	border-top: 1px solid #ddd;
+	margin: 2rem 0;
+}
+
+/* Figures */
+figure {
+	margin: 1rem 0;
+}
+
+figcaption {
+	font-size: 0.875rem;
+	color: #666;
+	margin-top: 0.5rem;
+}
+
+/* Galleries */
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 0.5rem;
+	margin: 1rem 0;
+}
+
+.gallery-item {
+	margin: 0;
+}
+
+.gallery-caption {
+	font-size: 0.75rem;
+	text-align: center;
+	padding: 0.25rem;
+}
+
+/* Password Protected Posts */
+.post-password-form {
+	margin: 2rem 0;
+}
+
+.post-password-form label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.post-password-form input[type="password"] {
+	width: 100%;
+	max-width: 300px;
+	margin-bottom: 1rem;
+}
+
+/* Edit Link */
+.edit-link {
+	display: inline-block;
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+}
+
+/* Screen Reader Text Enhancement */
+.says {
+	display: none;
+}
+
+/* Print Styles */
+@media print {
+	.site-header,
+	.main-navigation,
+	.site-footer,
+	.widget-area,
+	.comments-area,
+	.post-navigation,
+	.pagination {
+		display: none;
+	}
+
+	.site-content {
+		max-width: 100%;
+		padding: 0;
+	}
+
+	.content-area {
+		display: block;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	a[href^="http"]::after {
+		content: " (" attr(href) ")";
+		font-size: 0.75em;
+		color: #666;
+	}
+}
+
+/* Focus Styles */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 2px solid #222;
+	outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
