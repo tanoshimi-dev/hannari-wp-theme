@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define theme constants
  */
-define( 'HANNARI_VERSION', '1.0.20' );
+define( 'HANNARI_VERSION', '1.0.22' );
 define( 'HANNARI_DIR', get_template_directory() );
 define( 'HANNARI_URI', get_template_directory_uri() );
 

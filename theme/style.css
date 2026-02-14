@@ -47,10 +47,12 @@ html {
 	font-size: 16px;
 	line-height: 1.6;
 	-webkit-text-size-adjust: 100%;
+	overflow-x: hidden;
 }
 
 body {
 	margin: 0;
+	overflow-x: hidden;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 1rem;
 	line-height: 1.8;
@@ -100,6 +102,8 @@ img {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .site-content {
@@ -108,12 +112,18 @@ img {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 2rem 1rem;
+	min-width: 0;
 }
 
 .content-area {
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 2rem;
+	min-width: 0;
+}
+
+.site-main {
+	min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -360,6 +370,8 @@ body:not(.singular) .entry-footer {
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-card);
 	padding: 2rem;
+	min-width: 0;
+	overflow: hidden;
 }
 
 /* ===== Entry Styles ===== */
@@ -398,6 +410,9 @@ body:not(.singular) .entry-footer {
 
 .entry-content {
 	margin-bottom: 1rem;
+	overflow-x: auto;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .entry-footer {
