@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define theme constants
  */
-define( 'HANNARI_VERSION', '1.0.0' );
+define( 'HANNARI_VERSION', '1.0.20' );
 define( 'HANNARI_DIR', get_template_directory() );
 define( 'HANNARI_URI', get_template_directory_uri() );
 
@@ -366,3 +366,48 @@ if ( ! function_exists( 'hannari_post_thumbnail' ) ) {
 function hannari_has_sidebar() {
 	return is_active_sidebar( 'sidebar-1' ) && ! is_page_template( 'template-full-width.php' );
 }
+
+/**
+ * Prevent WordPress from offering updates for this custom theme.
+ *
+ * If the slug "hannari" matches a theme on wordpress.org, WP will try to
+ * overwrite local files with the remote version. This filter removes
+ * Hannari from the update transient so that never happens.
+ */
+function hannari_disable_theme_update( $transient ) {
+	$theme_slug = get_template();
+	if ( isset( $transient->response[ $theme_slug ] ) ) {
+		unset( $transient->response[ $theme_slug ] );
+	}
+	return $transient;
+}
+add_filter( 'site_transient_update_themes', 'hannari_disable_theme_update' );
+
+/**
+ * Customizer settings and CSS custom properties
+ */
+require HANNARI_DIR . '/inc/customizer.php';
+
+/**
+ * Enqueue Customizer live-preview script
+ */
+function hannari_customize_preview_js() {
+	wp_enqueue_script(
+		'hannari-customizer',
+		HANNARI_URI . '/assets/js/customizer.js',
+		array( 'customize-preview' ),
+		HANNARI_VERSION,
+		true
+	);
+}
+add_action( 'customize_preview_init', 'hannari_customize_preview_js' );
+
+/**
+ * Output scroll-to-top button in footer
+ */
+function hannari_scroll_to_top() {
+	echo '<button class="scroll-to-top" aria-label="' . esc_attr__( 'Scroll to top', 'hannari' ) . '">';
+	echo '<span aria-hidden="true">&uarr;</span>';
+	echo '</button>';
+}
+add_action( 'wp_footer', 'hannari_scroll_to_top' );

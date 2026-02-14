@@ -15,10 +15,11 @@
 		setupNavigation();
 		setupSmoothScroll();
 		setupExternalLinks();
+		setupScrollToTop();
 	}
 
 	/**
-	 * Mobile navigation toggle
+	 * Mobile navigation toggle with overlay
 	 */
 	function setupNavigation() {
 		var nav = document.querySelector('.main-navigation');
@@ -33,23 +34,46 @@
 		menuToggle.setAttribute('aria-controls', 'primary-menu');
 		menuToggle.innerHTML = '<span class="screen-reader-text">Menu</span><span class="menu-icon"></span>';
 
-		// Insert toggle before the menu
+		// Create overlay
+		var overlay = document.createElement('div');
+		overlay.className = 'nav-overlay';
+		document.body.appendChild(overlay);
+
 		var menu = nav.querySelector('ul');
 		if (menu) {
 			nav.insertBefore(menuToggle, menu);
 
-			// Toggle menu on click
+			function openMenu() {
+				menuToggle.setAttribute('aria-expanded', 'true');
+				nav.classList.add('toggled');
+				overlay.classList.add('is-active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeMenu() {
+				menuToggle.setAttribute('aria-expanded', 'false');
+				nav.classList.remove('toggled');
+				overlay.classList.remove('is-active');
+				document.body.style.overflow = '';
+			}
+
 			menuToggle.addEventListener('click', function() {
 				var expanded = this.getAttribute('aria-expanded') === 'true';
-				this.setAttribute('aria-expanded', !expanded);
-				nav.classList.toggle('toggled');
+				if (expanded) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
 			});
 
-			// Close menu on escape key
+			overlay.addEventListener('click', function() {
+				closeMenu();
+				menuToggle.focus();
+			});
+
 			document.addEventListener('keydown', function(e) {
 				if (e.key === 'Escape' && nav.classList.contains('toggled')) {
-					menuToggle.setAttribute('aria-expanded', 'false');
-					nav.classList.remove('toggled');
+					closeMenu();
 					menuToggle.focus();
 				}
 			});
@@ -64,7 +88,6 @@
 			anchor.addEventListener('click', function(e) {
 				var targetId = this.getAttribute('href');
 
-				// Skip if just "#"
 				if (targetId === '#') {
 					return;
 				}
@@ -77,7 +100,6 @@
 						block: 'start'
 					});
 
-					// Update focus for accessibility
 					target.setAttribute('tabindex', '-1');
 					target.focus();
 				}
@@ -98,7 +120,6 @@
 				link.setAttribute('target', '_blank');
 				link.setAttribute('rel', 'noopener noreferrer');
 
-				// Add screen reader text for accessibility
 				if (!link.querySelector('.screen-reader-text')) {
 					var srText = document.createElement('span');
 					srText.className = 'screen-reader-text';
@@ -106,6 +127,31 @@
 					link.appendChild(srText);
 				}
 			}
+		});
+	}
+
+	/**
+	 * Scroll-to-top button: show on scroll, smooth scroll back
+	 */
+	function setupScrollToTop() {
+		var btn = document.querySelector('.scroll-to-top');
+		if (!btn) {
+			return;
+		}
+
+		window.addEventListener('scroll', function() {
+			if (window.pageYOffset > 500) {
+				btn.classList.add('is-visible');
+			} else {
+				btn.classList.remove('is-visible');
+			}
+		});
+
+		btn.addEventListener('click', function() {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
 		});
 	}
 
